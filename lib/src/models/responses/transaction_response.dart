@@ -1,7 +1,7 @@
-import 'package:flutter_authorize_net_client/src/models/data/error_message.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../utils/utils.dart';
+import '../data/error_message.dart';
 import '../data/response_message.dart';
 
 part 'transaction_response.g.dart';
