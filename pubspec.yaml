@@ -1,0 +1,34 @@
+name: flutter_authorize_net_client
+description: A new Flutter package project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # for HTTP requests
+  http: ^0.13.0
+
+  # do not change version before implementing null-safety
+  # for data model to/from json conversion
+  json_annotation: ^3.1.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # do not change version before implementing null-safety
+  build_runner: ^1.0.0
+  # do not change version before implementing null-safety
+  json_serializable: ^3.5.1
+
+
+flutter:
