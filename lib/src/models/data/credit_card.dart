@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../utils/utils.dart';
 
-part 'creadit_card.g.dart';
+part 'credit_card.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CreditCard {

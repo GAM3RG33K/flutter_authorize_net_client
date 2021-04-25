@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../utils/utils.dart';
-import 'creadit_card.dart';
+import 'credit_card.dart';
 
 part 'payment.g.dart';
 

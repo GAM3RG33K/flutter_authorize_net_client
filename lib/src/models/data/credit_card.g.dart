@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'creadit_card.dart';
+part of 'credit_card.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
