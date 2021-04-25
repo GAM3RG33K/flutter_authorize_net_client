@@ -20,6 +20,8 @@ class CreateTransactionResponse {
 
   Map<String, dynamic> toJson() =>
       removeNullsFromMap(_$CreateTransactionResponseToJson(this));
+
+  bool get isSuccessful => verifyTransactionSuccess(this);
 }
 
 /*{

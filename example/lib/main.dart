@@ -69,6 +69,7 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   final response = await _client.authenticationTest();
                   print('response: \n${response.toJson()}');
+                  addLog('isSuccessFul: ${response.isSuccessful}');
                   addLog(jsonEncode(response.toJson()));
                 },
               ),
@@ -91,6 +92,7 @@ class _MyAppState extends State<MyApp> {
                 '123',
               );
               print('response: \n${response.toJson()}');
+              addLog('isSuccessFul: ${response.isSuccessful}');
               addLog(jsonEncode(response.toJson()));
             },
           ),
@@ -108,6 +110,7 @@ class _MyAppState extends State<MyApp> {
                     '123',
                   );
                   print('response: \n${response.toJson()}');
+                  addLog('isSuccessFul: ${response.isSuccessful}');
                   addLog(jsonEncode(response.toJson()));
                   _refID = response?.transactionResponse?.transId;
                 },
@@ -123,28 +126,12 @@ class _MyAppState extends State<MyApp> {
                     _refID,
                   );
                   print('response: \n${response.toJson()}');
+                  addLog('isSuccessFul: ${response.isSuccessful}');
                   addLog(jsonEncode(response.toJson()));
                 },
               ),
             ],
           ),
-          // ElevatedButton(
-          //   child: Text('3. Refund Payment *'),
-          //   onPressed: () async {
-          //     assert(_refID != null,
-          //         'Transaction Reference ID should not be null.');
-          //     final response = await _client.refundTransaction(
-          //       '5',
-          //       'USD'.toLowerCase(),
-          //       '5424000000000015',
-          //       '2022-12',
-          //       '123',
-          //       _refID,
-          //     );
-          //     print('response: \n${response.toJson()}');
-          //     addLog(jsonEncode(response.toJson()));
-          //   },
-          // ),
           ElevatedButton(
             child: Text('3. Void Payment *'),
             onPressed: () async {
@@ -152,6 +139,7 @@ class _MyAppState extends State<MyApp> {
                   'Transaction Reference ID should not be null.');
               final response = await _client.voidTransaction(_refID);
               print('response: \n${response.toJson()}');
+              addLog('isSuccessFul: ${response.isSuccessful}');
               addLog(jsonEncode(response.toJson()));
             },
           ),

@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
-
-* TODO: Describe initial release.
+## [0.1.0] - 25/05/2021
+#### initial release.
+Supported Operations:
+- Testing Authentication of the client using credentials
+- Charge a credit card
+- Create an authorized payment for future transaction
+- execute pre-authorized payment transaction
+- void an existing authorized transaction

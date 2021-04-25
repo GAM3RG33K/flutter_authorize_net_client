@@ -17,6 +17,8 @@ class AuthenticationTestResponse {
 
   Map<String, dynamic> toJson() =>
       removeNullsFromMap(_$AuthenticationTestResponseToJson(this));
+
+  bool get isSuccessful => verifySuccessCode(messages);
 }
 
 /*{

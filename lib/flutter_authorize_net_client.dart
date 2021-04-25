@@ -14,11 +14,28 @@ class AuthorizeNetClient {
   final String merchantName;
   final String transactionKey;
 
-  AuthorizeNetClient(
+  AuthorizeNetClient._(
     this.merchantName,
-    this.transactionKey, {
-    this.environment = ENV_TEST,
-  });
+    this.transactionKey,
+    this.environment,
+  );
+
+  static AuthorizeNetClient _instance;
+
+  factory AuthorizeNetClient(
+    String merchantName,
+    String transactionKey, {
+    String environment = ENV_TEST,
+  }) {
+    if (_instance == null) {
+      _instance = AuthorizeNetClient._(
+        merchantName,
+        transactionKey,
+        environment,
+      );
+    }
+    return _instance;
+  }
 
   String get baseApi => environment == ENV_PRODUCTION
       ? 'https://api.authorize.net/xml/v1/request.api'

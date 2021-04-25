@@ -1,8 +1,8 @@
 name: flutter_authorize_net_client
-description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+description: A Simple Flutter plugin to use Authorize.net using it's API.
+version: 0.1.0
+homepage: https://github.com/GAM3RG33K/flutter_authorize_net_client
+repository: https://github.com/GAM3RG33K/flutter_authorize_net_client
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -12,19 +12,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # for HTTP requests
   http: ^0.13.0
-
   # do not change version before implementing null-safety
   # for data model to/from json conversion
   json_annotation: ^3.1.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   # do not change version before implementing null-safety
   build_runner: ^1.0.0
   # do not change version before implementing null-safety
