@@ -5,6 +5,8 @@ import '../data/merchant_authentication.dart';
 
 part 'authentication_test_request.g.dart';
 
+/// A model to represent An Authentication test request:
+/// Refer: https://developer.authorize.net/api/reference/index.html#gettingstarted-section-section-header
 @JsonSerializable(explicitToJson: true)
 class AuthenticationTestRequest {
   static const String Tag = 'authenticateTestRequest';

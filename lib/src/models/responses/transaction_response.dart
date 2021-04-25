@@ -1,3 +1,4 @@
+import 'package:flutter_authorize_net_client/src/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../utils/utils.dart';
@@ -6,6 +7,14 @@ import '../data/response_message.dart';
 
 part 'transaction_response.g.dart';
 
+/// A model to represent structure of the transaction details of the [CreateTransactionResponse]
+///
+/// It contains many important data like, [responseCode], [authCode], [transId],
+/// [refTransID], etc.
+///
+/// [messages] contains a list of messages to describe the issues or transaction details
+/// [errors] contains a list of error messages to describe the errors that occurred during
+/// the execution of the request
 @JsonSerializable(explicitToJson: true)
 class TransactionResponse {
   @JsonKey(name: 'responseCode')
@@ -39,8 +48,7 @@ class TransactionResponse {
   @JsonKey(name: 'SupplementalDataQualificationIndicator')
   final int supplementalDataQualificationIndicator;
 
-  TransactionResponse(
-      this.responseCode,
+  TransactionResponse(this.responseCode,
       this.authCode,
       this.avsResultCode,
       this.cvvResultCode,

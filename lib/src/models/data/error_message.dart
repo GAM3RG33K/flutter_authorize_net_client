@@ -4,6 +4,7 @@ import '../../utils/utils.dart';
 
 part 'error_message.g.dart';
 
+/// A model to represent an error message provided by the api
 @JsonSerializable(explicitToJson: true)
 class ErrorMessage {
   @JsonKey(name: 'errorCode')

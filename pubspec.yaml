@@ -1,6 +1,6 @@
 name: flutter_authorize_net_client
 description: A Simple Flutter plugin to use Authorize.net using it's API.
-version: 0.1.0
+version: 0.1.0+1
 homepage: https://github.com/GAM3RG33K/flutter_authorize_net_client
 repository: https://github.com/GAM3RG33K/flutter_authorize_net_client
 

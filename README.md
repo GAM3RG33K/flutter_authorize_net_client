@@ -22,7 +22,7 @@ Also, all the transactions are Credit card based transactions only.
 - Charge a credit card
     - Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-charge-a-credit-card
 - Create an authorized payment for future transaction
-    - https://developer.authorize.net/api/reference/index.html#payment-transactions-authorize-a-credit-card
+    - Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-authorize-a-credit-card
 - execute pre-authorized payment transaction
     - Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-capture-funds-authorized-through-another-channel
 - void an existing authorized transaction
@@ -40,7 +40,12 @@ import 'package:flutter_authorize_net_client/flutter_authorize_net_client.dart';
 
 ### Create Client instance:
 ```dart
-final _client = AuthorizeNetClient('MERCHANT_NAME', 'TRANSACTION_KEY');
+final _client = AuthorizeNetClient(
+                  '5KP3u95bQpv',
+                  '346HZ32z3fP4hTG2',
+                  // provide AuthorizeNetClient.ENV_PRODUCTION here to use production api
+                  environment: AuthorizeNetClient.ENV_TEST,
+                );
 ```
 
 ### Test Authentication:

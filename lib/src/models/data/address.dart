@@ -4,6 +4,7 @@ import '../../utils/utils.dart';
 
 part 'address.g.dart';
 
+/// A model to represent address used for shipping & billing purpose
 @JsonSerializable(explicitToJson: true)
 class Address {
   @JsonKey(name: 'firstName')

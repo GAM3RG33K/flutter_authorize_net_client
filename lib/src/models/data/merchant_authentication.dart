@@ -4,6 +4,8 @@ import '../../utils/utils.dart';
 
 part 'merchant_authentication.g.dart';
 
+/// A model to represent merchant authentication details,
+/// i.e. merchant name (API ID) & transactionKey (API SECRET)
 @JsonSerializable(explicitToJson: true)
 class MerchantAuthentication {
   @JsonKey(name: 'name')

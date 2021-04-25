@@ -4,6 +4,7 @@ import '../../utils/utils.dart';
 
 part 'credit_card.g.dart';
 
+/// A model to represent credit card data used for payment
 @JsonSerializable(explicitToJson: true)
 class CreditCard {
   @JsonKey(name: 'cardNumber')

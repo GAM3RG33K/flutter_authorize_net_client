@@ -5,6 +5,8 @@ import 'response_message.dart';
 
 part 'response_messages.g.dart';
 
+/// A model to represent a collection of [ResponseMessage] & result code
+/// to verify the request status
 @JsonSerializable(explicitToJson: true)
 class ResponseMessages {
   static const String STATUS_OK = 'Ok';

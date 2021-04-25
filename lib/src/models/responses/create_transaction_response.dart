@@ -6,6 +6,14 @@ import 'transaction_response.dart';
 
 part 'create_transaction_response.g.dart';
 
+/// A model to represent general structure of the response for [CreateTransactionRequest]
+/// request to the api
+///
+/// [transactionResponse] property of this model contains important data about the
+/// requested transaction
+///
+/// [messages] contains the descriptive information of the request, i.e. info message
+/// & result code
 @JsonSerializable(explicitToJson: true)
 class CreateTransactionResponse {
   @JsonKey(name: 'transactionResponse')

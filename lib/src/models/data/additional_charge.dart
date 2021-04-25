@@ -4,6 +4,10 @@ import '../../utils/utils.dart';
 
 part 'additional_charge.g.dart';
 
+/// A model to represent additional charges like,
+///  - tax
+///  - duty
+///  - shipping, etc
 @JsonSerializable(explicitToJson: true)
 class AdditionalCharge {
   @JsonKey(name: 'amount')

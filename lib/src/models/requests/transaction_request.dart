@@ -7,6 +7,14 @@ import '../data/payment.dart';
 
 part 'transaction_request.g.dart';
 
+/// A model that represents transaction request data
+///
+/// Important transaction data like, [transactionType], [amount], [currencyCode],
+/// [payment] are included in this model.
+///
+/// Some additional data is also included in this model:
+///  - additional charges: [tax], [duty], [shipping]
+///  - addresses: [billTo] & [shipTo]
 @JsonSerializable(explicitToJson: true)
 class TransactionRequest {
   static const String TAG_AUTH_CAPTURE_TRANSACTION = 'authCaptureTransaction';
@@ -50,6 +58,7 @@ class TransactionRequest {
     this.shipping,
   });
 
+  /// Factory constructor for creating a request to Charge the Credit card
   factory TransactionRequest.authCaptureTransaction(
     String amount,
     String currencyCode,
@@ -73,6 +82,7 @@ class TransactionRequest {
     );
   }
 
+  /// Factory constructor for creating a request to pre-authorize a transaction
   factory TransactionRequest.authOnlyTransaction(
     String amount,
     String currencyCode,
@@ -96,6 +106,7 @@ class TransactionRequest {
     );
   }
 
+  /// Factory constructor for creating a request to execute pre-authorize a transaction
   factory TransactionRequest.priorAuthCaptureTransaction(
       String amount, String currencyCode, String referenceTransactionID) {
     return TransactionRequest(
@@ -106,6 +117,8 @@ class TransactionRequest {
     );
   }
 
+  /// Factory constructor for creating a request to refund a transaction,
+  /// A Work in progress right now
   factory TransactionRequest.refundTransaction(String amount,
       String currencyCode, Payment payment, String referenceTransactionID) {
     return TransactionRequest(
@@ -117,6 +130,7 @@ class TransactionRequest {
     );
   }
 
+  /// Factory constructor for creating a request to void/discard/cancel a transaction
   factory TransactionRequest.voidTransaction(String referenceTransactionID) {
     return TransactionRequest(
       TAG_VOID_TRANSACTION,

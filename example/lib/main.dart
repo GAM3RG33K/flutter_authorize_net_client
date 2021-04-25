@@ -19,7 +19,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _client = AuthorizeNetClient('5KP3u95bQpv', '346HZ32z3fP4hTG2');
+    _client = AuthorizeNetClient(
+      '5KP3u95bQpv',
+      '346HZ32z3fP4hTG2',
+      environment: AuthorizeNetClient.ENV_TEST,
+    );
   }
 
   @override
@@ -119,7 +123,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text('2.2 Charge Pre-Authorized payment *'),
                 onPressed: () async {
                   assert(_refID != null,
-                  'Transaction Reference ID should not be null.');
+                      'Transaction Reference ID should not be null.');
                   final response = await _client.priorAuthCaptureTransaction(
                     '5',
                     'USD'.toLowerCase(),
@@ -136,7 +140,7 @@ class _MyAppState extends State<MyApp> {
             child: Text('3. Void Payment *'),
             onPressed: () async {
               assert(_refID != null,
-              'Transaction Reference ID should not be null.');
+                  'Transaction Reference ID should not be null.');
               final response = await _client.voidTransaction(_refID);
               print('response: \n${response.toJson()}');
               addLog('isSuccessFul: ${response.isSuccessful}');
