@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../..//utils/utils.dart';
+import '../../utils/utils.dart';
 import '../data/response_messages.dart';
 import 'transaction_response.dart';
 

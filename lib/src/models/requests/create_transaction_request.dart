@@ -13,16 +13,16 @@ class CreateTransactionRequest {
   @JsonKey(name: 'merchantAuthentication')
   final MerchantAuthentication merchantAuthentication;
 
-  @JsonKey(name: 'transactionRequest')
-  final TransactionRequest transactionRequest;
-
   @JsonKey(name: 'refId')
   final String referenceID;
 
+  @JsonKey(name: 'transactionRequest')
+  final TransactionRequest transactionRequest;
+
   CreateTransactionRequest(
-    this.merchantAuthentication,
-    this.transactionRequest, {
+    this.merchantAuthentication, {
     this.referenceID,
+    this.transactionRequest,
   });
 
   Map<String, dynamic> toJson() =>

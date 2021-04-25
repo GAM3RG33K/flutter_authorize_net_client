@@ -13,11 +13,11 @@ CreateTransactionRequest _$CreateTransactionRequestFromJson(
         ? null
         : MerchantAuthentication.fromJson(
             json['merchantAuthentication'] as Map<String, dynamic>),
-    json['transactionRequest'] == null
+    referenceID: json['refId'] as String,
+    transactionRequest: json['transactionRequest'] == null
         ? null
         : TransactionRequest.fromJson(
             json['transactionRequest'] as Map<String, dynamic>),
-    referenceID: json['refId'] as String,
   );
 }
 
@@ -25,6 +25,6 @@ Map<String, dynamic> _$CreateTransactionRequestToJson(
         CreateTransactionRequest instance) =>
     <String, dynamic>{
       'merchantAuthentication': instance.merchantAuthentication?.toJson(),
-      'transactionRequest': instance.transactionRequest?.toJson(),
       'refId': instance.referenceID,
+      'transactionRequest': instance.transactionRequest?.toJson(),
     };

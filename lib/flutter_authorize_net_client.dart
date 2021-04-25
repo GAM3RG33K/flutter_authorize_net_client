@@ -4,13 +4,13 @@ import 'dart:convert';
 
 import 'src/models/data/merchant_authentication.dart';
 import 'src/models/data/payment.dart';
-import 'src/models/data/response_messages.dart';
 import 'src/models/requests/authentication_test_request.dart';
 import 'src/models/requests/create_transaction_request.dart';
 import 'src/models/requests/transaction_request.dart';
 import 'src/models/responses/authentication_test_response.dart';
 import 'src/models/responses/create_transaction_response.dart';
 import 'src/utils/network_utils.dart';
+import 'src/utils/utils.dart';
 
 class AuthorizeNetClient {
   static const ENV_PRODUCTION = 'production';
@@ -52,12 +52,16 @@ class AuthorizeNetClient {
     String currencyCode,
     String cardNumber,
     String expirationDate,
-    String cardCode,
-  ) async {
+    String cardCode, {
+    String referenceID,
+  }) async {
     final transactionRequest = TransactionRequest.authCaptureTransaction(amount,
         currencyCode, Payment.creditCard(cardNumber, expirationDate, cardCode));
-    final createTransactionRequest =
-        CreateTransactionRequest(merchantAuthentication, transactionRequest);
+    final createTransactionRequest = CreateTransactionRequest(
+      merchantAuthentication,
+      referenceID: referenceID ?? uniqueReferenceID,
+      transactionRequest: transactionRequest,
+    );
 
     var responseJson = await executeRequest(
       baseApi,
@@ -74,12 +78,16 @@ class AuthorizeNetClient {
     String currencyCode,
     String cardNumber,
     String expirationDate,
-    String cardCode,
-  ) async {
+    String cardCode, {
+    String referenceID,
+  }) async {
     final transactionRequest = TransactionRequest.authOnlyTransaction(amount,
         currencyCode, Payment.creditCard(cardNumber, expirationDate, cardCode));
-    final createTransactionRequest =
-        CreateTransactionRequest(merchantAuthentication, transactionRequest);
+    final createTransactionRequest = CreateTransactionRequest(
+      merchantAuthentication,
+      referenceID: referenceID ?? uniqueReferenceID,
+      transactionRequest: transactionRequest,
+    );
 
     var responseJson = await executeRequest(
       baseApi,
@@ -94,15 +102,19 @@ class AuthorizeNetClient {
   Future<CreateTransactionResponse> priorAuthCaptureTransaction(
     String amount,
     String currencyCode,
-    String referenceTransactionID,
-  ) async {
+    String referenceTransactionID, {
+    String referenceID,
+  }) async {
     final transactionRequest = TransactionRequest.priorAuthCaptureTransaction(
       amount,
       currencyCode,
       referenceTransactionID,
     );
-    final createTransactionRequest =
-        CreateTransactionRequest(merchantAuthentication, transactionRequest);
+    final createTransactionRequest = CreateTransactionRequest(
+      merchantAuthentication,
+      referenceID: referenceID ?? uniqueReferenceID,
+      transactionRequest: transactionRequest,
+    );
 
     var responseJson = await executeRequest(
       baseApi,
@@ -120,8 +132,9 @@ class AuthorizeNetClient {
     String cardNumber,
     String expirationDate,
     String cardCode,
-    String referenceTransactionID,
-  ) async {
+    String referenceTransactionID, {
+    String referenceID,
+  }) async {
     final transactionRequest = TransactionRequest.refundTransaction(
       amount,
       currencyCode,
@@ -132,8 +145,11 @@ class AuthorizeNetClient {
       ),
       referenceTransactionID,
     );
-    final createTransactionRequest =
-        CreateTransactionRequest(merchantAuthentication, transactionRequest);
+    final createTransactionRequest = CreateTransactionRequest(
+      merchantAuthentication,
+      referenceID: referenceID ?? uniqueReferenceID,
+      transactionRequest: transactionRequest,
+    );
 
     var responseJson = await executeRequest(
       baseApi,
@@ -146,13 +162,17 @@ class AuthorizeNetClient {
   }
 
   Future<CreateTransactionResponse> voidTransaction(
-    String referenceTransactionID,
-  ) async {
+    String referenceTransactionID, {
+    String referenceID,
+  }) async {
     final transactionRequest = TransactionRequest.voidTransaction(
       referenceTransactionID,
     );
-    final createTransactionRequest =
-        CreateTransactionRequest(merchantAuthentication, transactionRequest);
+    final createTransactionRequest = CreateTransactionRequest(
+      merchantAuthentication,
+      referenceID: referenceID ?? uniqueReferenceID,
+      transactionRequest: transactionRequest,
+    );
 
     var responseJson = await executeRequest(
       baseApi,
@@ -163,12 +183,4 @@ class AuthorizeNetClient {
         CreateTransactionResponse.fromJson(jsonDecode(responseJson));
     return response;
   }
-}
-
-bool verifySuccessCode(CreateTransactionResponse response) {
-  final resultCode = response?.messages?.resultCode;
-  final errorMessages = response?.transactionResponse?.errors;
-
-  return (errorMessages == null || errorMessages.isEmpty) &&
-      resultCode == ResponseMessages.STATUS_OK;
 }
