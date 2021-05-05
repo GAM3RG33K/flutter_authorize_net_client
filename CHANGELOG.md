@@ -1,8 +1,16 @@
-## [0.1.0+1] - 25/05/2021
+## [0.1.0+2] - 05/05/2021
 #### Documentation update
-*Note*: The dependencies are kept old to support projects that has not yet migrated to Null-safety
+* Added example code in method documentation
+* Removed debug logs
 
-## [0.1.0] - 25/05/2021
+*Note*: The dependencies are kept old to support projects that has not yet migrated to Null-safety
+Will migrate to null safety in near future.
+
+
+## [0.1.0+1] - 25/04/2021
+#### Documentation update
+
+## [0.1.0] - 25/04/2021
 #### initial release.
 Supported Operations:
 - Testing Authentication of the client using credentials

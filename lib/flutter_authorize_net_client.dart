@@ -86,6 +86,13 @@ class AuthorizeNetClient {
   ///
   /// If not then it will provide some error information to resolve the issue
   ///
+  ///
+  /// Example with test data:
+  ///```dart
+  ///   final response = await _client.authenticationTest();
+  ///   print('isSuccessFul: ${response.isSuccessful}');
+  /// ```
+  ///
   /// https://developer.authorize.net/api/reference/index.html#gettingstarted-section-section-header
   Future<AuthenticationTestResponse> authenticationTest() async {
     final authenticationTestRequest =
@@ -95,7 +102,6 @@ class AuthorizeNetClient {
       baseApi,
       authenticationTestRequest.getRequestJson(),
     );
-    print('responseJson: ' + responseJson);
     final response =
         AuthenticationTestResponse.fromJson(jsonDecode(responseJson));
     return response;
@@ -107,8 +113,19 @@ class AuthorizeNetClient {
   /// & [amount], [currencyCode] to create a transaction request that will charge the
   /// given credit card the provided [amount]
   ///
-  ///
   /// An optional [referenceID] can be provided to track & verify the transactions
+  ///
+  /// Example with test data:
+  ///```dart
+  ///   final response = await _client.chargeCreditCard(
+  ///       '5',
+  ///       'USD'.toLowerCase(), // converting to lowercase is important
+  ///       '5424000000000015',
+  ///       '2022-12',
+  ///       '123',
+  ///     );
+  ///   print('isSuccessFul: ${response.isSuccessful}');
+  /// ```
   ///
   /// **Note**:
   ///  Make sure that the provided amount includes all tax, shipping, duty etc charges
@@ -134,7 +151,6 @@ class AuthorizeNetClient {
       baseApi,
       createTransactionRequest.getRequestJson(),
     );
-    print('responseJson: ' + responseJson);
     final response =
         CreateTransactionResponse.fromJson(jsonDecode(responseJson));
     return response;
@@ -147,6 +163,18 @@ class AuthorizeNetClient {
   /// a transactionID value that can be used in future to execute a transaction.
   ///
   /// An optional [referenceID] can be provided to track & verify the transactions
+  ///
+  /// Example with test data:
+  ///```dart
+  ///   final response = await _client.authorizeCardPayment(
+  ///       '5',
+  ///       'USD'.toLowerCase(), // converting to lowercase is important
+  ///       '5424000000000015',
+  ///       '2022-12',
+  ///       '123',
+  ///     );
+  ///   print('isSuccessFul: ${response.isSuccessful}');
+  /// ```
   ///
   /// Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-authorize-a-credit-card
   Future<CreateTransactionResponse> authorizeCardPayment(
@@ -169,7 +197,6 @@ class AuthorizeNetClient {
       baseApi,
       createTransactionRequest.getRequestJson(),
     );
-    print('responseJson: ' + responseJson);
     final response =
         CreateTransactionResponse.fromJson(jsonDecode(responseJson));
     return response;
@@ -183,6 +210,17 @@ class AuthorizeNetClient {
   /// credit card used for pre-authorization
   ///
   /// An optional [referenceID] can be provided to track & verify the transactions
+  ///
+  ///
+  /// Example with test data:
+  ///```dart
+  ///   final response = await _client.priorAuthCaptureTransaction(
+  ///      '5',
+  ///      'USD'.toLowerCase(),
+  ///      _refID,
+  ///     );
+  ///   print('isSuccessFul: ${response.isSuccessful}');
+  /// ```
   ///
   /// Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-capture-funds-authorized-through-another-channel
   Future<CreateTransactionResponse> priorAuthCaptureTransaction(
@@ -206,7 +244,6 @@ class AuthorizeNetClient {
       baseApi,
       createTransactionRequest.getRequestJson(),
     );
-    print('responseJson: ' + responseJson);
     final response =
         CreateTransactionResponse.fromJson(jsonDecode(responseJson));
     return response;
@@ -223,6 +260,12 @@ class AuthorizeNetClient {
   /// A new transaction must happen in order to charge the credit card.
   ///
   /// An optional [referenceID] can be provided to track & verify the transactions
+  ///
+  /// Example with test data:
+  ///```dart
+  ///   final response = await _client.voidTransaction(_refID);
+  ///   print('isSuccessFul: ${response.isSuccessful}');
+  /// ```
   ///
   /// Reference: https://developer.authorize.net/api/reference/index.html#payment-transactions-void-a-transaction
   Future<CreateTransactionResponse> voidTransaction(
@@ -242,7 +285,6 @@ class AuthorizeNetClient {
       baseApi,
       createTransactionRequest.getRequestJson(),
     );
-    print('responseJson: ' + responseJson);
     final response =
         CreateTransactionResponse.fromJson(jsonDecode(responseJson));
     return response;

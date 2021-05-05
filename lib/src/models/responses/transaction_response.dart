@@ -48,7 +48,8 @@ class TransactionResponse {
   @JsonKey(name: 'SupplementalDataQualificationIndicator')
   final int supplementalDataQualificationIndicator;
 
-  TransactionResponse(this.responseCode,
+  TransactionResponse(
+      this.responseCode,
       this.authCode,
       this.avsResultCode,
       this.cvvResultCode,
